@@ -22,7 +22,7 @@ public class FileLoaderApp {
 	 */
 	public static void main(String[] args) {
 		
-		ResourceLoaderService resourceService = new ResourceLoaderService("New_Data_Feed.csv");
+		ResourceLoaderService resourceService = new ResourceLoaderService("New_Data_Feed2.csv");
 		UrlParserService parserService = new UrlParserService();
 		WriteCsvService writeCsvService = new WriteCsvService();
 		try {
