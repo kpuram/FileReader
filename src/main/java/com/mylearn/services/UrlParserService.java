@@ -3,9 +3,12 @@
  */
 package main.java.com.mylearn.services;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import main.java.com.mylearn.core.ValidExtensions;
+import main.java.com.mylearn.model.DataFeedRow;
 
 
 
@@ -15,19 +18,28 @@ import main.java.com.mylearn.core.ValidExtensions;
  */
 public class UrlParserService {
 
-	private String filePath;
+
 	
-	public UrlParserService(String filePath) {
-		this.filePath=filePath;
+	public UrlParserService() {
 	}
 	
-	public List<String> processDataFile(){
+	public List<String> processDataFeedRows(List<DataFeedRow> dataFeeds){
+		List<String> parsedDataFeeds=  new ArrayList<>();
+		WriteCsvService csvService = new WriteCsvService();
+		if(dataFeeds != null && dataFeeds.size()>0) {
+			for(DataFeedRow feedRow : dataFeeds) {
+				String[] parsedDataRow = new String [3];
+				parsedDataRow[0]=feedRow.getSerialNum();
+				parsedDataRow[1]=processExtUrl(feedRow.getUrlStr());
+				parsedDataRow[2]=feedRow.getNoOfHits();
+				parsedDataFeeds.add(csvService.convertToCSV(parsedDataRow));
+			}
+		}
 		
-		
-		return null;
+		return parsedDataFeeds;
 	}
 	
-	public String processExtUrl(String url,String[] validExts) {
+	public String processExtUrl(String url) {
 		String finalString =null;
 		boolean isFound= false;
 		 for (String ext : ValidExtensions.getvalidExt()) {

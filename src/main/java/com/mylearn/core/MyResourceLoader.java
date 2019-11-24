@@ -3,25 +3,33 @@
  */
 package main.java.com.mylearn.core;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.Arrays;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Optional;
-import java.util.OptionalInt;
 import java.util.stream.Collectors;
-
-import javax.management.openmbean.OpenDataException;
 
 /**
  * @author Chitra
  *
  */
-public class FileReader {
+public class MyResourceLoader {
 
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
+		
+		MyResourceLoader resourceLoader= new MyResourceLoader();
+		try {
+			resourceLoader.loadFileWithReader();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		System.out.println("File check");
 		String [] supportedUrlExts= new String[3];
 		supportedUrlExts[0]= ".shtml";
@@ -84,4 +92,25 @@ public class FileReader {
 
 		return finalString;
 	}
+	
+    private void loadFileWithReader() throws IOException {
+
+        try (FileReader fileReader = new FileReader("src/main/resources/New_Data_Feed.csv");
+             BufferedReader reader = new BufferedReader(fileReader)) {
+            String contents = reader.lines()
+                .collect(Collectors.joining(System.lineSeparator()));
+            System.out.println(contents);
+        }
+
+    }
+
+    private void loadFileAsResource() throws IOException {
+
+        try (InputStream inputStream = getClass().getResourceAsStream("/New_Data_Feed.csv");
+             BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
+            String contents = reader.lines()
+                .collect(Collectors.joining(System.lineSeparator()));
+            System.out.println(contents);
+        }
+    }
 }
