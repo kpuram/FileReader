@@ -1,11 +1,13 @@
 /**
  * 
  */
-package com.mylearn.services;
+package main.java.com.mylearn.services;
 
 import java.util.List;
 
-import com.mylearn.core.ValidExtensions;
+import main.java.com.mylearn.core.ValidExtensions;
+
+
 
 /**
  * @author Chitra

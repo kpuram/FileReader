@@ -1,7 +1,7 @@
 /*
  * 
  */
-package com.mylearn.core;
+package main.java.com.mylearn.core;
 
 import java.util.ArrayList;
 import java.util.List;
