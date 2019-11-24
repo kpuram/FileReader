@@ -104,7 +104,7 @@ public class MyResourceLoader {
 
     }
 
-    private void loadFileAsResource() throws IOException {
+/*    private void loadFileAsResource() throws IOException {
 
         try (InputStream inputStream = getClass().getResourceAsStream("/New_Data_Feed.csv");
              BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
@@ -112,5 +112,5 @@ public class MyResourceLoader {
                 .collect(Collectors.joining(System.lineSeparator()));
             System.out.println(contents);
         }
-    }
+    }*/
 }
