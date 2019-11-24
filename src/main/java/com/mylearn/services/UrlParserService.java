@@ -62,11 +62,13 @@ public class UrlParserService {
 		 }
 		 
 		 if(!isFound) {
-			 if(url.endsWith("/")) {
+			 int lastOccuranceOfSlash = url.lastIndexOf("/");
+			 finalString=url.substring(0,lastOccuranceOfSlash)+"/index.html";
+/*			 if(url.endsWith("/")) {
 				 finalString= url+"index.html";
 			 }else {
 				 finalString= url+"/index.html";
-			 }
+			 }*/
 			 
 		 }
 
